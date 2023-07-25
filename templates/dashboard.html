@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" href=href="{{url_for('static',filename='styles.css',_external=True)}}>
+</head>
+{% block style %}
+{{super}}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+{% endblock %}
+<body>
+  <div class="header>">
+  <h1>Dashboard <br> Welcome {{session.username}} <br> <button type="submit" id="logout-button" onclick="window.location.href='/logout/'">Logout</button></h1>
+  <a class="btn btn-success" href="/addmedicaments"> Add Medicament</a>
+  </div>
+  <hr><hr>
+  <p class="text-info">MEDICAMENTS</p>
+  <hr><hr>
+  <table class="table">
+    <tr>
+      <th>Medicament ID</th>
+      <th>Medicament</th>
+      <th>Manufacturer</th>
+      <th>Stock Quantity</th>
+      <th>Expiry Date</th>
+      <th>Price</th>
+        <th>Description</th>
+        <th>DELETE</th>
+    </tr>
+    {% for medicament in medicaments %}
+      <form action="{{ url_for('delete_medicament', id=medicament[0]) }}" method=POST>
+      <tr>
+        <td>{{ medicament[0] }}</td>
+        <td>{{ medicament[1] }}</td>
+        <td>{{ medicament[2] }}</td>
+        <td>{{ medicament[3] }}</td>
+        <td>{{ medicament[4] }}</td>
+        <td>{{ medicament[5] }}</td>
+        <td>{{ medicament[6] }}</td>
+        <td>
+            <input type=submit value=DELETE>
+        </td>
+      </tr>
+          </form>
+    {% endfor %}
+  </table>
+<hr><hr>
+<p class="text-info">PHARMACY</p>
+<hr><hr>
+  <table class="table">
+    <tr>
+      <th>Pharmacy ID</th>
+      <th>Pharmacy</th>
+      <th>Address</th>
+      <th>Phone Number</th>
+    </tr>
+    {% for pharm in pharms %}
+      <tr>
+        <td>{{ pharm[0] }}</td>
+        <td>{{ pharm[1] }}</td>
+        <td>{{ pharm[2] }}</td>
+        <td>{{ pharm[3] }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+  <hr><hr>
+<p class="text-info">COSTUMER</p>
+<hr><hr>
+  <table class="table">
+    <tr>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Name</th>
+      <th>Lastname</th>
+      <th>Phone Number</th>
+      <th>Address</th>
+    </tr>
+    {% for costumer in costumers %}
+      <tr>
+        <td>{{ costumer[0] }}</td>
+        <td>{{ costumer[1] }}</td>
+        <td>{{ costumer[2] }}</td>
+        <td>{{ costumer[3] }}</td>
+        <td>{{ costumer[5] }}</td>
+        <td>{{ costumer[6] }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+<hr><hr>
+<div>
+      {% with messages = get_flashed_messages() %}
+            {% if messages %}
+               <ul class=flashes>
+               {% for message in messages %}
+                 <li>{{ message }}</li>
+               {% endfor %}
+               </ul>
+             {% endif %}
+           {% endwith %}
+</div>
+
+</body>
+</html>

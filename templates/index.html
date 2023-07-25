@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharmacy</title>
+    <link rel="stylesheet" type="text/css" href="static/styles.css">
+</head>
+{% block style %}
+{{super}}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+{% endblock %}
+<body style="background: url(../static/index_img.jpg);
+             background-repeat: no-repeat;
+             background-attachment: fixed;
+             background-size: 100% 100%;">
+    <div class="header">
+        <h1>P H A R M A C Y</h1>
+    </div>
+    <div class="box">
+        <a href="{{url_for('registration')}}"><h1>Registration</h1></a>
+    </div>
+    <div class="box">
+        <a href="{{url_for('login')}}"><h1>Login</h1></a>
+    </div>
+    <div class="box">
+        <a href="{{url_for('medicaments')}}"><h1>Medicaments</h1></a>
+    </div>
+</body>
+</html>

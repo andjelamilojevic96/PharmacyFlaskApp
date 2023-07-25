@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='styles.css', _external=True)}}">
+</head>
+<body style="background: url(../static/index_img.jpg);
+             background-repeat: no-repeat;
+             background-attachment: fixed;
+             background-size: 100% 100%;">
+    <div class="header">
+        <h1>Sign up</h1>
+    </div>
+    <div class="registration-box">
+        <div id="registration-box-box">
+            <form id="registration-form" class="form" action="" method="post">
+                <div class="form-group">
+                    <label for="name" class="text-info">Name:</label>
+                    <input type="text" name="name" id="name" class="form-box">
+                </div>
+                <div class="form-group">
+                    <label for="lastname" class="text-info">Lastname:</label>
+                    <input type="text" name="lastname" id="lastname" class="form-box">
+                </div>
+                <div class="form-group">
+                    <label for="email" class="text-info">Email:</label>
+                    <input type="email" name="email" id="email" class="form-box">
+                </div>
+                <div class="form-group">
+                    <label for="username" class="text-info">Username:</label>
+                    <input type="text" name="username" id="username" class="form-box">
+                </div>
+                <div class="form-group">
+                    <label for="password" class="text-info">Password</label>
+                    <input type="password" name="password" id="password" class="form-box" >
+                </div>
+                <div class="form-group">
+                    <label for="passwordConfirm" class="text-info">Confirm Password</label>
+                    <input type="password" name="passwordConfirm" id="passwordConfirm" class="form-box">
+                </div>
+                <div class="form-group">
+                    <label for="phoneNumber" class="text-info">Phone Number</label>
+                    <input type="text" name="phoneNumber" id="phoneNumber" class="form-box">
+                </div>
+                <div class="form-group">
+                    <label for="address" class="text-info">Address</label>
+                    <input type="text" name="address" id="address" class="form-box">
+                </div>
+		        <input type="submit" class="text-info" name="submit" value=" Submit"> <br><br>
+            </form>
+        </div>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class=flashes>
+                {% for message in messages %}
+                 <li>{{ message }}</li>
+               {% endfor %}
+            </ul>
+        {% endif %}
+        {% endwith %}
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicament</title>
+</head>
+<body style="background: url(../static/med_img.jpg);
+             background-repeat: no-repeat;
+             background-attachment: fixed;
+             background-size: 100% 100%;">
+{% block style %}
+{{super}}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+{% endblock %}
+
+    <div class="header">
+        <h1>Add Medicaments</h1>
+    </div>
+    <div class="medicament-container">
+        <form id="medicament-form" class="form" action="" method="POST">
+        <table class="table">
+            <tr>
+                <th>Medicament ID</th>
+                <th>Medicament</th>
+                <th>Manufacturer</th>
+                <th>Stock Quantity</th>
+                <th>Expiry Date</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th></th>
+            </tr>
+            <tr>
+                <td class="med-input">
+                    <input type="number" name="idMedicament" id="idMedicament" class="form-box-med">
+                </td>
+                <td class="med-input">
+                    <input type="text" name="medicamentName" id="medicamentName" class="form-box-med">
+                </td>
+                <td class="med-input">
+                    <input type="text" name="manufacturer" id="manufacturer" class="form-box-med">
+                </td>
+                <td class="med-input">
+                    <input type="number" name="stockQuantity" id="stockQuantity" class="form-box-med">
+                </td>
+                <td class="med-input">
+                    <input type="date" name="expiryDate" id="expiryDate" class="form-box-med">
+                </td>
+                <td class="med-input">
+                    <input type="number" name="price" id="price" class="form-box-med" step="any">
+                </td>
+                <td class="med-input">
+                    <input type="text" name="description" id="description" class="form-box-med">
+                </td>
+                <td class="med-input">
+                    <button type="submit" id="newmedicament">Add Medicament</button>
+                </td>
+      </tr>
+  </table>
+        </form>
+
+    </div>
+    {% with messages = get_flashed_messages() %}
+            {% if messages %}
+               <ul class=flashes>
+               {% for message in messages %}
+                 <li>{{ message }}</li>
+               {% endfor %}
+               </ul>
+             {% endif %}
+           {% endwith %}
+</body>
+</html>
