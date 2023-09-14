@@ -210,7 +210,7 @@ def pharmacy():
     pharm = cur.fetchall()
     if result > 0:
         return render_template('dashboard.html', pharmas=pharm)
-    flask.flash('No Pharmacy Found', 'danger')
+    flask.flash('No Pharmacy Founded', 'danger')
     return render_template('dashboard.html')
 
 
